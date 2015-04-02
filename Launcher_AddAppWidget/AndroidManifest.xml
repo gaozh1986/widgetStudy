@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="android.gaozh"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.BIND_APPWIDGET" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
+            android:name="android.gaozh.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 配置窗口小部件的Receiver -->
+        <receiver android:name="android.gaozh.BusinessReceiver" >
+            <intent-filter>
+                <action android:name="com.qin.action.CHANGE_IMAGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 配置窗口小部件的Receiver -->
+        <receiver
+            android:name="android.gaozh.provider.Widget1X1Provider"
+            android:label="自定义1x1" >
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_info_1_1" >
+            </meta-data>
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 配置窗口小部件的Receiver -->
+        <receiver
+            android:name="android.gaozh.provider.Widget2X2Provider"
+            android:icon="@drawable/girl"
+            android:label="自定义2x2" >
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_info_2_2" >
+            </meta-data>
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <!-- 配置窗口小部件的Receiver -->
+        <receiver
+            android:name="android.gaozh.provider.Widget4X3Provider"
+            android:label="自定义4x3" >
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_info_4_3" >
+            </meta-data>
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="android.gaozh.provider.WidgetProviderLst"
+            android:label="自定义Lst" >
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_info_lst" >
+            </meta-data>
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="android.gaozh.provider.TostBroadCast" >
+            <intent-filter>
+                <action android:name="com.android.gaozh.tst.onclickItem" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="android.gaozh.provider.WidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+    </application>
+
+</manifest>
